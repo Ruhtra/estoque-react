@@ -24,3 +24,7 @@ export interface GetProductResponseDto {
     price: number
     amount: number
 }
+
+export interface DeleteProductRequestDto {
+    id: string
+}

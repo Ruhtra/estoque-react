@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { useCreateProduct } from '../../services/Querys/Product/Product';
+import { useCreateProduct } from '../../../services/Querys/Product/Product';
 import './CreateProductDialog.css'
 import * as Dialog from '@radix-ui/react-dialog';
 import { useForm } from 'react-hook-form';

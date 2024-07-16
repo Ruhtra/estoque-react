@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "react-query";
 import { api } from "../../Api";
-import { CreateProductRequestDto, GetAllProductResponseDto, GetProductRequestDto, GetProductResponseDto } from "./ProductDto";
+import { CreateProductRequestDto, DeleteProductRequestDto, GetAllProductResponseDto, GetProductRequestDto, GetProductResponseDto } from "./ProductDto";
 import { queryClient } from "../../QueryClient";
 
 export function useGetAllProduct() {
@@ -37,6 +37,23 @@ export function useCreateProduct() {
         }, {
             onSuccess: () => {
                 queryClient.invalidateQueries('AllProducts')
+            }
+        }
+    )
+}
+
+export function useDeleteProduct() {
+    return useMutation(
+        async ({ id }: DeleteProductRequestDto) => {
+            await api.delete('/product/delete', {
+                params: {
+                    id: id
+                }
+            })
+        }, {
+            onSuccess: (_, { id }) => {
+                queryClient.invalidateQueries('AllProducts')
+                queryClient.invalidateQueries(['Product', id])
             }
         }
     )
