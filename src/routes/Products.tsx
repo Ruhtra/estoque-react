@@ -1,22 +1,15 @@
+import { CreateProductDialog } from "../components/CreateProductDialog/CreateProductDialog"
 import { Loading } from "../components/Loading/Loading"
-import { useCreateProduct, useGetAllProduct } from "../services/Querys/Product/Product"
+import { useGetAllProduct } from "../services/Querys/Product/Product"
+
+import './Product.css'
 
 export function Products() {
     const { data: products, status: productsStatus } = useGetAllProduct()
 
-    const { mutate, error } = useCreateProduct()
 
-    if (productsStatus == "loading")  return <Loading />
-    if (productsStatus == "error") return <h2>Houve um erro ao carregar produtos</h2> 
-
-  
-
-    function added () {
-        mutate({
-            name: "onion",
-            price: 3.2
-        })
-    }
+    if (productsStatus == "loading") return <Loading />
+    if (productsStatus == "error") return <h2>Houve um erro ao carregar produtos</h2>
 
     return (
         <>
@@ -26,7 +19,9 @@ export function Products() {
                 })
             }
 
-            <button onClick={added}>added onion</button>
+            <CreateProductDialog>
+                <button>add product</button>
+            </CreateProductDialog>
 
 
         </>
