@@ -16,7 +16,7 @@ export function ProductsRoute() {
         <>
             {
                 products?.map(p => {
-                    return <ProductComponent product={p} />
+                    return <ProductComponent key={p.id} product={p} />
                 })
             }
 

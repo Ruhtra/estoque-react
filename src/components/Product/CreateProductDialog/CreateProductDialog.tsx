@@ -1,47 +1,37 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useCreateProduct } from '../../../services/Querys/Product/Product';
 import './CreateProductDialog.css'
 import * as Dialog from '@radix-ui/react-dialog';
-import { useForm } from 'react-hook-form';
+import { CreateProductContent } from './CreateProductContent';
 
 export type CreateProductDialogProps = {
     children: ReactNode
 }
 
 export function CreateProductDialog({ children }: CreateProductDialogProps) {
-    const { mutate, error: _error, status } = useCreateProduct()
-    const { register, handleSubmit } = useForm()
+    const [openDialog, setopenDialog] = useState(false);
+    const { mutate, status, reset } = useCreateProduct()
 
-    function createProduct(data: any) {
-        mutate({
-            name: data.name
-        })
-    }
+    useEffect(() => {
+        if (openDialog == false)
+            reset()
+    }, [openDialog]);
+
+    useEffect(() => {
+        if (status == 'success') setopenDialog(false)
+    }, [status])
 
 
     return (
-        <Dialog.Root>
+        <Dialog.Root open={openDialog} onOpenChange={setopenDialog}>
             <Dialog.Trigger asChild>
                 {children}
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className="DialogOverlay" />
                 <Dialog.Content className="DialogContent">
-                    {status == "idle"
-                        ? <form onSubmit={handleSubmit(createProduct)}>
-                            <div className='section_input'>
-                                <label htmlFor="name">Nome do produto: </label>
-                                <input type="text" id="name" {...register('name')} />
-                            </div>
-
-                            <button type='submit'>Confirmar</button>
-                        </form>
-                        :<>
-                            {status === "loading" && <span>loading</span>}
-                            {status === "success" && <span>sucesso</span>}
-                            {status === "error" && <span>erro</span>}
-                        </>
-                    }
+                    <Dialog.Title>Create Product</Dialog.Title>
+                    <CreateProductContent mutate={mutate} status={status} />
                 </Dialog.Content>
             </Dialog.Portal>
         </Dialog.Root>
