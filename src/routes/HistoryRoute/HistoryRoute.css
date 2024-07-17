@@ -12,9 +12,13 @@
     text-align: center;
     /* font-size: 1.5em; */
 }
+.HistoryRoute ul.historico li > *:first-child {
+    text-indent: .3em;
+    text-align: left;
+}
 .HistoryRoute ul.historico li {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: auto 4em 4em 7em 7em;
     gap: 0 .2em;
 }
 
