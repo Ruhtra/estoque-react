@@ -15,6 +15,7 @@ export function useIncreaseStock() {
             onSuccess: (_, { id }) => {
                 queryClient.invalidateQueries('AllProducts')
                 queryClient.invalidateQueries(['Product', id])
+                queryClient.invalidateQueries(['AllHistory'])
             }
         }
     )

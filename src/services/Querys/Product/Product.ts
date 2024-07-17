@@ -36,7 +36,8 @@ export function useCreateProduct() {
             await api.post('/product/create', product)
         }, {
             onSuccess: () => {
-                queryClient.invalidateQueries('AllProducts')
+                queryClient.invalidateQueries(['AllProducts'])
+                queryClient.invalidateQueries(['AllHistory'])
             }
         }
     )
@@ -54,6 +55,7 @@ export function useDeleteProduct() {
             onSuccess: (_, { id }) => {
                 queryClient.invalidateQueries('AllProducts')
                 queryClient.invalidateQueries(['Product', id])
+                queryClient.invalidateQueries(['AllHistory'])
             }
         }
     )

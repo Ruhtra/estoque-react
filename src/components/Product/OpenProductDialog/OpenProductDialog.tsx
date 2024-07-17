@@ -3,7 +3,6 @@ import * as Dialog from '@radix-ui/react-dialog';
 import './OpenProductDialog.css';
 import { useDeleteProduct } from '../../../services/Querys/Product/Product';
 import { GetAllProductResponseDto } from '../../../services/Querys/Product/ProductDto';
-import { useIncreaseStock } from '../../../services/Querys/Stock/Stock';
 import { IncreaseStockDialog } from '../IncreaseStockDialog/IncrieaseStockDialog';
 
 export type OpenProductDialogProps = {
@@ -15,7 +14,6 @@ export function OpenProductDialog({ product, children }: OpenProductDialogProps)
     const [openDialog, setopenDialog] = useState(false);
 
     const { mutate, status } = useDeleteProduct();
-    const { mutate: mutateStock, status: statusStock } = useIncreaseStock();
 
     function deleteProduct(id: string) {
         mutate({ id });
@@ -23,7 +21,7 @@ export function OpenProductDialog({ product, children }: OpenProductDialogProps)
 
     useEffect(() => {
         if (status == 'success') setopenDialog(false)
-    }, [status, statusStock]);
+    }, [status]);
 
     return (
         <Dialog.Root open={openDialog} onOpenChange={setopenDialog}>
@@ -32,7 +30,7 @@ export function OpenProductDialog({ product, children }: OpenProductDialogProps)
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className="DialogOverlay" />
-                <Dialog.Content className="DialogContent">
+                <Dialog.Content className="DialogContent" >
                     <Dialog.Title>Detalhes do Produto</Dialog.Title>
                     <Dialog.Description>
                         {status === "idle" ? (

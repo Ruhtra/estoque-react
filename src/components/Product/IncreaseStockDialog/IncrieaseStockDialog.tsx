@@ -8,6 +8,8 @@ export type IncreaseStockDialogProps = {
     id: string
 }
 
+// não contém valdiação para errors
+
 export function IncreaseStockDialog({ children, id }: IncreaseStockDialogProps) {
     const [openDialog, setopenDialog] = useState(false);
     const { mutate, status, reset } = useIncreaseStock()
