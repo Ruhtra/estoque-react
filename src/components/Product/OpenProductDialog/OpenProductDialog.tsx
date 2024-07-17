@@ -1,8 +1,10 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import './OpenProductDialog.css';
 import { useDeleteProduct } from '../../../services/Querys/Product/Product';
 import { GetAllProductResponseDto } from '../../../services/Querys/Product/ProductDto';
+import { useIncreaseStock } from '../../../services/Querys/Stock/Stock';
+import { IncreaseStockDialog } from '../IncreaseStockDialog/IncrieaseStockDialog';
 
 export type OpenProductDialogProps = {
     children: ReactNode;
@@ -10,14 +12,21 @@ export type OpenProductDialogProps = {
 };
 
 export function OpenProductDialog({ product, children }: OpenProductDialogProps) {
+    const [openDialog, setopenDialog] = useState(false);
+
     const { mutate, status } = useDeleteProduct();
+    const { mutate: mutateStock, status: statusStock } = useIncreaseStock();
 
     function deleteProduct(id: string) {
         mutate({ id });
     }
 
+    useEffect(() => {
+        if (status == 'success') setopenDialog(false)
+    }, [status, statusStock]);
+
     return (
-        <Dialog.Root>
+        <Dialog.Root open={openDialog} onOpenChange={setopenDialog}>
             <Dialog.Trigger asChild>
                 {children}
             </Dialog.Trigger>
@@ -29,6 +38,12 @@ export function OpenProductDialog({ product, children }: OpenProductDialogProps)
                         {status === "idle" ? (
                             <>
                                 <span>{JSON.stringify(product)}</span>
+
+
+                                <IncreaseStockDialog id={product.stock.id}>
+                                    <button>increase stock</button>
+
+                                </IncreaseStockDialog>
                                 <button onClick={() => deleteProduct(product.id)}>Delete</button>
                             </>
                         ) : (
