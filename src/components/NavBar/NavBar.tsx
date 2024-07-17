@@ -20,6 +20,11 @@ export function NavBar() {
                         History
                     </Link>
                 </li>
+                <li>
+                    <Link to={'/recipe'}>
+                        Recipes
+                    </Link>
+                </li>
             </ul>
         </nav>
     )

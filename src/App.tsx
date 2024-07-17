@@ -5,6 +5,7 @@ import { NavBar } from "./components/NavBar/NavBar";
 
 import "./App.css";
 import { HistoryRoute } from "./routes/HistoryRoute/HistoryRoute";
+import { RecipeRoute } from "./routes/RecipesRoute/RecipeRoute";
 
 export function App() {
   return (
@@ -14,6 +15,7 @@ export function App() {
         <Route path="/" element={<Index />} />
         <Route path="/products" element={<ProductsRoute />} />
         <Route path="/history" element={<HistoryRoute />} />
+        <Route path="/recipe" element={<RecipeRoute />} />
       </Routes>
 
       <NavBar />
