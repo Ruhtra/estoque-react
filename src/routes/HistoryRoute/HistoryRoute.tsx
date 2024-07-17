@@ -1,19 +1,34 @@
+import { Title } from '../../components/Title/Title'
 import { useGetAllHistory } from '../../services/Querys/History/History'
 import './HistoryRoute.css'
 
-export function HistoryRoute () {
-    const { data, status} = useGetAllHistory()
+export function HistoryRoute() {
+    const { data, status } = useGetAllHistory()
 
-    return (<>
+    return (
+        
+        <div className="HistoryRoute">
+            <Title title='History' />
+            {status == 'loading' && <h2>loading</h2>}
 
-        {status == 'loading' && <h2>loading</h2>}
-        {
-
-            data?.map(e => {
-                return <span>{JSON.stringify(e)}</span>
-            })
-        }
-
-        Historico
-    </>)
+            <ul className="historico">
+                <li>
+                    <span>Name</span>
+                    <span>amount</span>
+                    <span>price</span>
+                    <span>Operation</span>
+                </li>
+                {
+                    data?.map(e => {
+                        return <li key={e.id}>
+                            <span>{e.product.name}</span>
+                            <span>{e.amount}</span>
+                            <span>{e.price}</span>
+                            <span>{e.operation}</span>
+                        </li>
+                    })
+                }
+            </ul>
+        </div>
+    )
 }

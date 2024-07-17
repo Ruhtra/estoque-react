@@ -1,7 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 :root {
-  
+  --nav-heigth: 3rem;
+  --color-1: rgba(0, 0, 0, .2);
+  --color-2: #362CD3;
+  --color-3: #8A2CD3;
+  --color-4: #D32CC9;
+  --color-5: rgba(0, 0, 0, .67);
+
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
+    background-color: var(--color-1);
 
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    /* font-weight: <weight>; */
+    font-style: normal;
+}
+
+body, html {
+    height: 100svh;
+}
+
+a, ul, button {
+    all: unset
 }

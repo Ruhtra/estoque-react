@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useIncreaseStock } from '../../../services/Querys/Stock/Stock';
 import { IncreaseStockContent } from './IncreaseStockContent';
+import { Cross1Icon } from '@radix-ui/react-icons';
 
 export type IncreaseStockDialogProps = {
     children: ReactNode
@@ -32,7 +33,12 @@ export function IncreaseStockDialog({ children, id }: IncreaseStockDialogProps) 
             <Dialog.Portal>
                 <Dialog.Overlay className="DialogOverlay" />
                 <Dialog.Content className="DialogContent">
-                    <Dialog.Title>Increase stock</Dialog.Title>
+                <Dialog.Title className='DialogTitle'>
+                        <div className="text">Increase Stock</div>
+                        <Dialog.Close asChild>
+                            <Cross1Icon className='icon' width={'100%'} height={'100%'} />
+                        </Dialog.Close>
+                    </Dialog.Title>
                     <IncreaseStockContent mutate={mutate} status={status} id={id} />
                 </Dialog.Content>
             </Dialog.Portal>

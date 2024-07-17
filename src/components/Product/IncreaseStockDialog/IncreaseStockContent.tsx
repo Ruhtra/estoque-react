@@ -24,12 +24,12 @@ export function IncreaseStockContent({ mutate, status , id}: myprop) {
             ? <form onSubmit={handleSubmit(increaseStock)}>
                 <div className='section_input'>
                     <label htmlFor="amount">Quantidade comprada: </label>
-                    <input type="number" id="amount" {...register('amount')} />
+                    <input type="number" step={0.01} id="amount" {...register('amount')} />
                 </div>
 
                 <div className='section_input'>
                     <label htmlFor="price">Preço total: </label>
-                    <input type="number" id="price" {...register('price')} />
+                    <input type="number" step={0.01} id="price" {...register('price')} />
                 </div>
 
                 <button type='submit'>Confirmar</button>

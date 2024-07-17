@@ -9,7 +9,8 @@ export type ProductComponentProps = {
 export function ProductComponent({ product }: ProductComponentProps) {
 
     return (<>
-            <span>{JSON.stringify(product)}</span>
+        <span>{product.name}</span>
+        <span>{product.stock.amount}</span>
         <OpenProductDialog product={product}>
             <button>Open</button>
         </OpenProductDialog>
