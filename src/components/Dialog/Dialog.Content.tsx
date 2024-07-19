@@ -11,6 +11,7 @@ export function DialogContent({ children }: DialogContentProps) {
             <Dialog.Overlay className="DialogOverlay" />
             <Dialog.Content className="DialogContent">
                {children}
+               <Dialog.Description />
             </Dialog.Content>
         </Dialog.Portal>
     )

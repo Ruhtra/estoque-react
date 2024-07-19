@@ -1,0 +1,29 @@
+    /* Footer */
+    .DialogFooter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1em;
+        font-size: 1.5em;
+        height: 2em;
+        margin-top: auto;
+    }
+    .DialogFooter > button {
+        --radius: calc(1em - .5rem);
+        color: var(--color-4);
+        height: 100%;
+        padding: 0 1em;
+    }
+    .DialogFooter > button:first-child {
+        border-radius: 0 var(--radius) 0 var(--radius);
+    }
+    .DialogFooter > button:last-child {
+        border-radius: var(--radius) 0 var(--radius) 0;
+    }
+    .DialogFooter > button.confirm {
+        background-color: var(--color-1);
+    }
+    .DialogFooter > button.cancel {
+        background-color: var(--color-1-2);
+    }
+    

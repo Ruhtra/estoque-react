@@ -1,6 +1,5 @@
 import { Title } from '../../components/Title/Title'
 import { useGetAllHistory } from '../../services/Querys/History/History'
-import './HistoryRoute.css'
 
 export function HistoryRoute() {
     const { data, status } = useGetAllHistory()

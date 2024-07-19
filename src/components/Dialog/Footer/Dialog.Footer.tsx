@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import './Dialog.Footer.css'
 
 export type DialogFooterProps = {
     children: ReactNode

@@ -7,7 +7,7 @@ export type DialogTriggerProps = {
 
 export function DialogTrigger({children}: DialogTriggerProps) {
     return (<>
-        <Dialog.Trigger>
+        <Dialog.Trigger asChild>
             {children}
         </Dialog.Trigger>
     </>)

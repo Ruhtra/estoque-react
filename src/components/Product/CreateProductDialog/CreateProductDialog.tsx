@@ -1,69 +1,72 @@
 
-// import { useCreateProduct } from '../../../services/Querys/Product/Product';
-// import { useForm } from 'react-hook-form';
-    // const { mutate, error: _error, status } = useCreateProduct()
-    // const { register, handleSubmit } = useForm()
-    // function createProduct(data: any) {
-    //     mutate({
-    //         name: data.name
-    //     })
-    // }
-import { ReactNode, useEffect, useState } from 'react';
 import { useCreateProduct } from '../../../services/Querys/Product/Product';
-import './CreateProductDialog.css'
-import * as Dialog from '@radix-ui/react-dialog';
-import { CreateProductContent } from './CreateProductContent';
-import { Cross1Icon } from '@radix-ui/react-icons';
+import { ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import { Dialog } from "../../Dialog";
+import { DialogContext } from '../../Dialog/DialogContext';
+import { useForm } from 'react-hook-form';
 
 export type CreateProductDialogProps = {
     children: ReactNode
 }
-  
+
+
+
 export function CreateProductDialog({ children }: CreateProductDialogProps) {
-    const [openDialog, setopenDialog] = useState(false);
+    const { openDialog, setOpenDialog } = useContext(DialogContext)
+
+    const { register, handleSubmit } = useForm()
+    const buttonSubmit = useRef<HTMLButtonElement>(null)
     const { mutate, status, reset } = useCreateProduct()
 
-    useEffect(() => {
-        if (openDialog == false)
-            reset()
-    }, [openDialog]);
+    function createProduct(data: any) {
+        mutate({
+            name: data.name
+        })
+    }
+
+
+    
 
     useEffect(() => {
-        if (status == 'success') setopenDialog(false)
+        if (openDialog == false) reset() 
+    }, [openDialog])
+
+
+    useEffect(() => {
+        if (status == 'success') setOpenDialog(false)
     }, [status])
 
 
     return (
-        <Dialog.Root open={openDialog} onOpenChange={setopenDialog}>
-            <Dialog.Trigger asChild>
-                {children}
-            </Dialog.Trigger>
-            <Dialog.Portal>
-                <Dialog.Overlay className="DialogOverlay" />
-                <Dialog.Content className="DialogContent">
-                    <Dialog.Title className='DialogTitle'>
-                        <div className="text">Create Product</div>
-                        <Dialog.Close asChild>
-                            <Cross1Icon className='icon' width={'100%'} height={'100%'} />
-                        </Dialog.Close>
-                    </Dialog.Title>
-                    <CreateProductContent mutate={mutate} status={status} />
+            <Dialog.Root>
+                <Dialog.Trigger>
+                    {children}
+                </Dialog.Trigger>
+                <Dialog.Content>
+                    <Dialog.Title title='Criar Produto' />
+                    <Dialog.Description>
+                        <form onSubmit={handleSubmit(createProduct)}>
+                            <div className="section">
+                                <label htmlFor="nameInput">Nome: </label>
+                                <input type="text" id="nameInput" {...register('name')} />
+                            </div>
+                            <div className="section">
+                                <label htmlFor="">Medida: </label>
+                                <input type="text" />
+                            </div>
+
+                            <button ref={buttonSubmit} style={{display: 'none'}} type='submit'>submit</button>
+                        </form>
+                    </Dialog.Description>
+                    <Dialog.Footer>
+                        <button onClick={() => setOpenDialog(false)} className='cancel'>Cancelar</button>
+                        <button onClick={()=> buttonSubmit.current?.click()} className='confirm'>Concluido</button>
+                    </Dialog.Footer>
                 </Dialog.Content>
             </Dialog.Root>
-        </>
     )
 }
-                        // {status == "idle"
-                        //     ? <form onSubmit={handleSubmit(createProduct)}>
-                        //         <div className='section_input'>
-                        //             <label htmlFor="name">Nome do produto: </label>
-                        //             <input type="text" id="name" {...register('name')} />
-                        //         </div>
 
-                        //     </form>
-                        //     : <>
-                        //         {status === "loading" && <span>loading</span>}
-                        //         {status === "success" && <span>sucesso</span>}
-                        //         {status === "error" && <span>erro</span>}
-                        //     </>
-                        // }
+
+
+

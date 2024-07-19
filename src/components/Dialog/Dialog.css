@@ -8,17 +8,21 @@
 
 /* content */
 .DialogContent {
-    background-color: white;
-    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-101);
+    border-radius: 1em;
     box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
     position: fixed;
     top: 50%;
     left: 50%;
+
     transform: translate(-50%, -50%);
     width: 90vw;
-    max-width: 450px;
+    max-width: 500px;
     max-height: 85vh;
-    padding: 25px;
+    min-height: 500px;
+    /* padding: 1em; */
     animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 .DialogContent:focus {
@@ -27,25 +31,63 @@
 
     /* Title */
     .DialogTitle {
+        color: var(--color-1);
+        --margin: calc(1em - 1rem);
+        margin: var(--margin) var(--margin) 0 var(--margin);
+
         display: grid;
+        align-items: center;
+        box-sizing: content-box;
+        
         grid-template-columns: auto 2em;
         height: 2em;
-        align-items: center;
-        background-color: aqua;
+        font-size: 1.5em;
+        border-bottom: .2em solid var(--color-1);
     }
     .DialogTitle .title {
-        background-color: gold;
+        font-size: 1.5em;
+    }
+    .DialogTitle .close {
+        cursor: pointer;
     }
     /* Description */
     .DialogDescription {
-        background-color: yellow;
-    }
-    /* Footer */
-    .DialogFooter {
-        background-color: red;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        --margin: calc(.5em);
+        margin: 0 var(--margin) 0 var(--margin);
+
+        flex-grow: 1;
+        padding: .5em;
     }
 
+    .DialogDescription .section {
+        width: 100%;
+        padding: 0 .5em;
+        display: grid;
+        grid-row: 1fr 1fr;
+        color: var(--color-1);
 
+
+        font-size: 2em;
+    }
+    .DialogDescription .section label {
+        font-size: 1em;
+        font-weight: 600;
+    }
+    .DialogContent .section input {
+        font-size: 1em;
+        line-height: 1em;
+        text-align: left;
+        width: 100%;
+
+        color: var(--color-1);
+        border: .1em solid var(--color-1);
+        border-radius: .25em;
+        text-indent: .25em;
+        background-color: var(--color-4);
+    }
 
 
 @keyframes overlayShow {

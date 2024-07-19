@@ -1,4 +1,4 @@
-import * as Dialog from "@radix-ui/react-dialog";
+// import * as Dialog from "@radix-ui/react-dialog";
 import { ReactNode } from "react"
 
 export type DialogDescriptionProps = {
@@ -7,8 +7,8 @@ export type DialogDescriptionProps = {
 
 export function DialogDescription({ children }: DialogDescriptionProps) {
     return (
-        <Dialog.Description className="DialogDescription">
+        <div className="DialogDescription">
             {children}
-        </Dialog.Description>
+        </div>
     )
 }

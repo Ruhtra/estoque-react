@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
-import './OpenProductDialog.css';
 import { useDeleteProduct } from '../../../services/Querys/Product/Product';
 import { GetAllProductResponseDto } from '../../../services/Querys/Product/ProductDto';
 import { IncreaseStockDialog } from '../IncreaseStockDialog/IncrieaseStockDialog';

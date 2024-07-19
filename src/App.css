@@ -2,11 +2,15 @@
 
 :root {
   --nav-heigth: 3rem;
-  --color-1: rgba(0, 0, 0, .2);
-  --color-2: #362CD3;
-  --color-3: #8A2CD3;
-  --color-4: #D32CC9;
-  --color-5: rgba(0, 0, 0, .67);
+
+  --color-1: #004D40;
+  --color-1-2: #750000;
+  --color-2: #00796B;
+  --color-3: #48A999;
+  --color-4: #FFFFFF;
+  --color-5: #E0F2F1;
+
+  --color-101: #DADADA;
 
 }
 
@@ -14,21 +18,20 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 body {
     background-color: var(--color-1);
-
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
-    /* font-weight: <weight>; */
-    font-style: normal;
 }
 
 body, html {
     height: 100svh;
 }
 
-a, ul, button {
+a, ul, button, input {
     all: unset
 }

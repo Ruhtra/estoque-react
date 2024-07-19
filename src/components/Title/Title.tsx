@@ -1,5 +1,3 @@
-import './Title.css'
-
 export type TitleProps = {
     title: string
 }

@@ -3,8 +3,8 @@ import { Loading } from "../../components/Loading/Loading"
 import { ProductComponent } from "../../components/Product/ProductComponent/ProductComponent"
 import { useGetAllProduct } from "../../services/Querys/Product/Product"
 
-import './ProductsRoute.css'
 import { Title } from "../../components/Title/Title"
+import { DialogProvider } from "../../components/Dialog/DialogContext"
 
 export function ProductsRoute() {
     const { data: products, status: productsStatus } = useGetAllProduct()
@@ -32,10 +32,11 @@ export function ProductsRoute() {
             </ul>
 
             <br />
-
-            <CreateProductDialog>
-                <button className="add">add product</button>
-            </CreateProductDialog>
+            <DialogProvider>
+                <CreateProductDialog>
+                    <button className="add">add product</button>
+                </CreateProductDialog>
+            </DialogProvider>
         </div>
     )
 }
