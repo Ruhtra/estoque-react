@@ -1,0 +1,37 @@
+.HistoryRoute ul.historico {
+    --border-radius: calc(.5em - .25em);
+
+    margin: 0 .5em .5em .5em;
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    flex-grow: 1;
+    border: .25em solid var(--color-3);
+    border-radius: .5em;
+    text-align: center;
+    /* font-size: 1.5em; */
+}
+.HistoryRoute ul.historico li > *:first-child {
+    text-indent: .3em;
+    text-align: left;
+}
+.HistoryRoute ul.historico li {
+    display: grid;
+    grid-template-columns: auto 4em 4em 7em 7em;
+    gap: 0 .2em;
+}
+
+.HistoryRoute ul.historico li:first-child {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.HistoryRoute ul.historico li:last-child {
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.HistoryRoute ul.historico li > * {
+    border-radius: inherit;
+    padding: .1em;
+    background-color: rgb(3, 1, 124);
+    color: white;
+}

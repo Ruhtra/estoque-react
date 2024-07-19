@@ -4,6 +4,7 @@ import { ProductComponent } from "../../components/Product/ProductComponent/Prod
 import { useGetAllProduct } from "../../services/Querys/Product/Product"
 
 import './ProductsRoute.css'
+import { Title } from "../../components/Title/Title"
 
 export function ProductsRoute() {
     const { data: products, status: productsStatus } = useGetAllProduct()
@@ -13,21 +14,28 @@ export function ProductsRoute() {
     if (productsStatus == "error") return <h2>Houve um erro ao carregar produtos</h2>
 
     return (
-        <>
-            {
-                products?.map(p => {
-                    return <ProductComponent product={p} />
-                })
-            }
+        <div className="productsRoute">
+            <Title title="Products"></Title>
 
-            <br />
+            <ul className="list">
+                <li>
+                    <span>Name</span>
+                    <span>Amount</span>
+                    <span></span>
+                </li>
+                {
+                    products?.map(p => {
+                        return <li key={p.id}><ProductComponent product={p} /></li>
+                    })
+                }
+
+            </ul>
+
             <br />
 
             <CreateProductDialog>
-                <button>add product</button>
+                <button className="add">add product</button>
             </CreateProductDialog>
-
-
-        </>
+        </div>
     )
 }

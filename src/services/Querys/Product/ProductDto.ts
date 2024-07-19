@@ -6,11 +6,12 @@ export interface CreateProductRequestDto {
 
 export interface GetAllProductResponseDto {
     id: string
-    name: string
-    price: number
-    amount: number
+    name: string,
+    stock: {
+        id: string,
+        amount: number
+    }
 }
-
 
 
 
@@ -20,11 +21,12 @@ export interface GetProductRequestDto {
 
 export interface GetProductResponseDto {
     id: string
-    name: string
-    price: number
-    amount: number
+    name: string,
+    stock: {
+        id: string,
+        amount: number
+    }
 }
-
 export interface DeleteProductRequestDto {
     id: string
 }
