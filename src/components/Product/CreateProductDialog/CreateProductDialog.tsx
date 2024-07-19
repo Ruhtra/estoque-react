@@ -51,8 +51,8 @@ export function CreateProductDialog({ children }: CreateProductDialogProps) {
                                 <input type="text" id="nameInput" {...register('name')} />
                             </div>
                             <div className="section">
-                                <label htmlFor="">Medida: </label>
-                                <input type="text" />
+                                <label htmlFor="unitInput">Medida: </label>
+                                <input type="text" id='unitInput' {...register('unit')} />
                             </div>
 
                             <button ref={buttonSubmit} style={{display: 'none'}} type='submit'>submit</button>

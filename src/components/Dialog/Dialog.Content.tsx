@@ -9,7 +9,7 @@ export function DialogContent({ children }: DialogContentProps) {
     return (
         <Dialog.Portal>
             <Dialog.Overlay className="DialogOverlay" />
-            <Dialog.Content className="DialogContent">
+            <Dialog.Content autoFocus={false} className="DialogContent">
                {children}
                <Dialog.Description />
             </Dialog.Content>

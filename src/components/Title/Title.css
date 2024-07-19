@@ -1,0 +1,13 @@
+.titleComponent {
+    display: block;
+    background-color: var(--color-3);
+    color: var(--color-4);
+    padding: .25em .5em;
+    width: min-content;
+    min-width: 200px;
+    /* margin: 1em; */
+    border-radius: 1em 5em 1em 1em;
+}
+.titleComponent h2 {
+    font-size: 1.75em;
+}
