@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 :root {
-  --nav-heigth: 3rem;
+  --nav-heigth: 5rem;
 
   --color-1: #004D40;
   --color-1-2: #750000;
@@ -34,4 +34,7 @@ body, html {
 
 a, ul, button, input {
     all: unset
+}
+ul {
+    list-style: none;
 }

@@ -1,31 +1,35 @@
-import { Link } from "react-router-dom"
-import "./NavBar.css"
+import { Link, useLocation } from "react-router-dom";
+import "./NavBar.css";
+import { ArchiveIcon, HomeIcon, ReaderIcon } from "@radix-ui/react-icons";
 
 export function NavBar() {
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     return (
         <nav>
             <ul>
-                <li>
+                <li className={currentPath === '/' ? 'selected' : ''}>
                     <Link to={'/'}>
-                        Home
+                        <HomeIcon className="icon" width={'100%'} height={'100%'}/>
                     </Link>
                 </li>
-                <li>
+                <li className={currentPath === '/products' ? 'selected' : ''}>
                     <Link to={'/products'}>
-                        Products
+                        <ArchiveIcon className="icon" width={'100%'} height={'100%'}/>
                     </Link>
                 </li>
-                <li>
+                <li className={currentPath === '/history' ? 'selected' : ''}>
                     <Link to={'/history'}>
-                        History
+                        <ReaderIcon className="icon" width={'100%'} height={'100%'}/>
                     </Link>
                 </li>
-                <li>
+                {/* <li className={currentPath === '/history' ? 'selected' : ''}>
                     <Link to={'/recipe'}>
                         Recipes
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
-    )
+    );
 }

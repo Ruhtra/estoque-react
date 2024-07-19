@@ -1,0 +1,32 @@
+nav {
+    background-color: red;
+    position: fixed;
+    bottom: 0;
+    width: 100svw;
+    height: var(--nav-heigth);
+}
+nav ul {
+    display: flex;
+    justify-content: space-around;
+
+    background-color: var(--color-2);
+
+    height: 100%;
+}
+nav ul li {
+    margin: .5em 0;
+    padding: .5em 1em;
+    border-radius: 1em;
+    position: relative;
+}
+nav ul li.selected {
+    background-color: var(--color-1);
+}
+nav ul li a {
+    user-select: none;
+}
+nav ul li .icon {
+    color: var(--color-4);
+    display: block;
+    user-select: none;
+}
