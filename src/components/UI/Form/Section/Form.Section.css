@@ -24,3 +24,17 @@
     text-indent: .25em;
     background-color: var(--color-4);
 }
+.section select {
+    font-size: 1em;
+    line-height: 1em;
+    text-align: left;
+    width: 100%;
+
+    cursor: pointer;
+    outline: none;
+    color: var(--color-1);
+    border: .1em solid var(--color-1);
+    border-radius: .25em;
+    text-indent: .25em;
+    background-color: var(--color-4);
+}

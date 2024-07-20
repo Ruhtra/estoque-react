@@ -23,8 +23,9 @@ export function CreateProductDialog({ children }: CreateProductDialogProps) {
         mutate({
             name: data.name
         })
+        console.log(data.unit);
+        
     }
-
 
     return (
         <Dialog.Root>
@@ -36,10 +37,13 @@ export function CreateProductDialog({ children }: CreateProductDialogProps) {
                     <Dialog.Description>
                         <form onSubmit={handleSubmit(createProduct)}>
                             <Form.Section id='nameInput' label='Nome'>
-                                <input type="text" id="nameInput" {...register('name')} />
+                                <Form.Input.Text id='nameInput' register={register} name="name" />
                             </Form.Section>
                             <Form.Section id='unitInput' label='Medida'>
-                                <input type="text" id='unitInput' {...register('unit')} />
+                                <Form.Input.Select id='unitInput' register={register} name='unit'>
+                                    <option value={`kg`}>KG</option>
+                                    <option value={`un`}>UN</option>
+                                </Form.Input.Select>
                             </Form.Section>
 
                             <button ref={buttonSubmit} style={{ display: 'none' }} type='submit'>submit</button>

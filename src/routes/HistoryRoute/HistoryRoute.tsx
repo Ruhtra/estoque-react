@@ -1,4 +1,4 @@
-import { Title } from '../../components/Title/Title'
+import { Title } from '../../components/UI/Title/Title'
 import { useGetAllHistory } from '../../services/Querys/History/History'
 
 export function HistoryRoute() {

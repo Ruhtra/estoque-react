@@ -34,10 +34,10 @@ export function OpenProductDialog({ product, children }: OpenProductDialogProps)
                         <DialogProvider>
 
                             <IncreaseStockDialog id={product.stock.id}>
-                                <button>increase stock</button>
+                                <button className='btnincrease'>increase stock</button>
                             </IncreaseStockDialog>
                         </DialogProvider>
-                        <button className='delete' onClick={() => deleteProduct(product.id)}>Delete</button>
+                        <button className='delete btnDelete' onClick={() => deleteProduct(product.id)}>Delete</button>
                     </div>
                 </Dialog.Description>
                 <Dialog.Footer>

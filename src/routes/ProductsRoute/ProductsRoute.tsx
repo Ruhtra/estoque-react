@@ -1,12 +1,12 @@
-import { CreateProductDialog } from "../../components/Product/CreateProductDialog/CreateProductDialog"
-import { Loading } from "../../components/Loading/Loading"
+import { CreateProductDialog } from "../../components/Product/Dialog/CreateProductDialog"
+import { Loading } from "../../components/UI/Loading/Loading"
 import { useGetAllProduct } from "../../services/Querys/Product/Product"
 
-import { Title } from "../../components/Title/Title"
-import { DialogProvider } from "../../components/Dialog/DialogContext"
+import { Title } from "../../components/UI/Title/Title"
+import { DialogProvider } from "../../components/UI/Dialog/DialogContext"
 
 import './ProductsRoute.css';
-import { OpenProductDialog } from "../../components/Product/OpenProductDialog/OpenProductDialog"
+import { OpenProductDialog } from "../../components/Product/Dialog/OpenProductDialog"
 
 export function ProductsRoute() {
     const { data: products, status: productsStatus } = useGetAllProduct()
@@ -36,25 +36,17 @@ export function ProductsRoute() {
                                         <td>{p.name}</td>
                                         <td>{p.stock.amount}</td>
                                         <td>null</td>
-                                        <td><OpenProductDialog product={p} ><button>open</button></OpenProductDialog></td>
+                                        <td>
+                                            <DialogProvider>
+                                                <OpenProductDialog product={p} ><button>open</button></OpenProductDialog>
+                                            </DialogProvider>
+                                        </td>
                                     </tr>
                                 })
                             }
                         </tbody>
                     </table>
                 </div>
-
-                {/* <ul className="list">
-                    <li>
-                        <span>Name</span>
-                        <span>Amount</span>
-                        <span></span>
-                    </li>
-                   )
-                    }
-
-                </ul> */}
-
                 <DialogProvider>
                     <CreateProductDialog>
                         <button className="add">add product</button>
