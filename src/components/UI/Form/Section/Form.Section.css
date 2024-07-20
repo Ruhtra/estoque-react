@@ -1,0 +1,26 @@
+.section {
+    width: 100%;
+    padding: 0 .5em;
+    display: grid;
+    grid-row: 1fr 1fr;
+    color: var(--color-1);
+
+
+    font-size: 2em;
+}
+.section label {
+    font-size: 1em;
+    font-weight: 600;
+}
+.section input {
+    font-size: 1em;
+    line-height: 1em;
+    text-align: left;
+    width: 100%;
+
+    color: var(--color-1);
+    border: .1em solid var(--color-1);
+    border-radius: .25em;
+    text-indent: .25em;
+    background-color: var(--color-4);
+}

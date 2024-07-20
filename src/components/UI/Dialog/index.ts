@@ -4,6 +4,8 @@ import { DialogContent } from "./Dialog.Content";
 import { DialogFooter } from "./Footer/Dialog.Footer.tsx";
 import { DialogDescription } from "./Dialog.Description";
 import { DialogTitle } from "./Dialog.Title";
+import { DialogConfirm } from "./Footer/Dialog.Confirm.tsx";
+import { DialogReject } from "./Footer/Dialog.Reject.tsx";
 
 
 export const Dialog = {
@@ -12,5 +14,7 @@ export const Dialog = {
     Content: DialogContent,
     Description: DialogDescription,
     Title: DialogTitle,
-    Footer: DialogFooter
+    Footer: DialogFooter,
+    Confirm: DialogConfirm,
+    Reject: DialogReject
 }
