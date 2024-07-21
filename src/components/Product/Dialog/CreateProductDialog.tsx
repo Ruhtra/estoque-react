@@ -1,6 +1,6 @@
 
 import { useCreateProduct } from '../../../services/Querys/Product/Product';
-import { ReactNode, useContext, useRef } from 'react';
+import { ReactNode, useContext, useEffect, useRef } from 'react';
 import { Dialog } from "../../UI/Dialog";
 import { DialogContext } from '../../UI/Dialog/DialogContext';
 import { useForm } from 'react-hook-form';
@@ -15,17 +15,24 @@ export type CreateProductDialogProps = {
 export function CreateProductDialog({ children }: CreateProductDialogProps) {
     const { setOpenDialog } = useContext(DialogContext)
 
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset: resetInputs } = useForm()
     const buttonSubmit = useRef<HTMLButtonElement>(null)
-    const { mutate, status } = useCreateProduct()
+    const { mutate, status, reset } = useCreateProduct()
 
     function createProduct(data: any) {
         mutate({
             name: data.name
         })
-        console.log(data.unit);
-        
     }
+
+    
+    useEffect(() => {
+        if (status == 'success' ) {
+            reset()
+            resetInputs()
+        }
+    }, [status])
+
 
     return (
         <Dialog.Root>

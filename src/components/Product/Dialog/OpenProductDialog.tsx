@@ -13,12 +13,15 @@ export type OpenProductDialogProps = {
 
 export function OpenProductDialog({ product, children }: OpenProductDialogProps) {
     const { setOpenDialog } = useContext(DialogContext)
-
-    const { mutate, status } = useDeleteProduct();
+    const { mutate, status, reset } = useDeleteProduct();
 
     function deleteProduct(id: string) {
         mutate({ id });
     }
+
+    useEffect(() => {
+        if (status == 'success' ) reset()
+    }, [status])
 
     return (
         <Dialog.Root>

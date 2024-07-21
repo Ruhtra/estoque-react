@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { useIncreaseStock } from '../../../services/Querys/Stock/Stock';
 import { Dialog } from '../../UI/Dialog';
 import { useForm } from 'react-hook-form';
@@ -9,8 +9,8 @@ export type IncreaseStockDialogProps = {
 }
 
 export function IncreaseStockDialog({ children, id }: IncreaseStockDialogProps) {
-    const { register, handleSubmit } = useForm()
-    const { mutate, status } = useIncreaseStock()
+    const { register, handleSubmit, reset: resetInputs } = useForm()
+    const { mutate, status, reset } = useIncreaseStock()
     const buttonSubmit = useRef<HTMLButtonElement>(null)
 
     function increaseStock(data: any) {
@@ -20,6 +20,15 @@ export function IncreaseStockDialog({ children, id }: IncreaseStockDialogProps) 
             id: id
         })
     }
+
+    
+    /* remover esse código daqui e coloca-lo dentros dos dialgos */
+    useEffect(() => {
+        if (status == 'success' ) {
+            reset()
+            resetInputs()
+        }
+    }, [status])
 
 
     return (
