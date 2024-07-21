@@ -7,6 +7,8 @@ import { DialogProvider } from "../../components/UI/Dialog/DialogContext"
 
 import './ProductsRoute.css';
 import { OpenProductDialog } from "../../components/Product/Dialog/OpenProductDialog"
+import { Page } from "../../components/UI/Route/Page"
+import { Route } from "../../components/UI/Route/Route"
 
 export function ProductsRoute() {
     const { data: products, status: productsStatus } = useGetAllProduct()
@@ -16,9 +18,9 @@ export function ProductsRoute() {
     if (productsStatus == "error") return <h2>Houve um erro ao carregar produtos</h2>
 
     return (
-        <div className="productsRoute">
+        <Route>
             <Title title="Products"></Title>
-            <div className="page">
+            <Page>
                 <div className="tabela">
                     <table>
                         <thead>
@@ -52,8 +54,8 @@ export function ProductsRoute() {
                         <button className="add">add product</button>
                     </CreateProductDialog>
                 </DialogProvider>
-            </div>
+            </Page >
+        </Route>
 
-        </div>
     )
 }

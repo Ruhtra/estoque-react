@@ -1,37 +1,45 @@
+import { Loading } from '../../components/UI/Loading/Loading'
+import { Page } from '../../components/UI/Route/Page'
+import { Route } from '../../components/UI/Route/Route'
 import { Title } from '../../components/UI/Title/Title'
 import { useGetAllHistory } from '../../services/Querys/History/History'
 
 export function HistoryRoute() {
     const { data, status } = useGetAllHistory()
 
+    if (status == "loading") return <Loading />
+    if (status == "error") return <h2>Houve um erro ao carregar produtos</h2>
+
     return (
-        
-        <div className="HistoryRoute">
+        <Route>
             <Title title='History' />
-            {status == 'loading' && <h2>loading</h2>}
-
-            <ul className="historico">
-                <li>
-                    <span>Name</span>
-                    <span>amount</span>
-                    <span>price</span>
-                    <span>Operation</span>
-                    <span>DateTime</span>
-                </li>
-                {
-                    data?.map(e => {
-                        let date = new Date(e.createdAt)
-
-                        return <li key={e.id}>
-                            <span>{e.product.name}</span>
-                            <span>{e.amount}</span>
-                            <span>{e.price}</span>
-                            <span>{e.operation}</span>
-                            <span>{date.toLocaleDateString()}</span>
-                        </li>
-                    })
-                }
-            </ul>
-        </div>
+            <Page>
+                <div className="tabela">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Created</td>
+                                <td>operation</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                data?.map(p => {
+                                    let date = new Date(p.createdAt)
+                                    return <tr key={p.id}>
+                                        <td>{p.product.name}</td>
+                                        <td>{p.price}</td>
+                                        <td>{date.toLocaleDateString()}</td>
+                                        <td>{p.operation}</td>
+                                    </tr>
+                                })
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </Page>
+        </Route>
     )
 }

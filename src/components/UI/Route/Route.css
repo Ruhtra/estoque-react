@@ -1,0 +1,8 @@
+.route {
+    padding: 1em;
+    height: 100%;
+    gap: 1em;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    position: relative;
+}

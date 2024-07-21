@@ -1,0 +1,8 @@
+.page {
+    display: grid;
+    grid-template-rows: auto 5em;
+    max-height: 100%;
+    overflow: hidden;
+    gap: 1em;
+    border-radius: 1em;
+}
