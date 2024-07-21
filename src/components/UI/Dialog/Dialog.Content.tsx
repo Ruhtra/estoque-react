@@ -22,7 +22,7 @@ export function DialogContent({ status, closeSuccess, children }: DialogContentP
             <Dialog.Content autoFocus={false} className="DialogContent">
                 {status == "loading" && <Loading></Loading>}
                 {status == "error" && <h3>Eror ao carregar contate o suporte</h3>}
-                {status == null || status == "idle" && <>
+                {(status == null || status == "idle") && <>
                     {children}
                     <Dialog.Description />
                 </>}

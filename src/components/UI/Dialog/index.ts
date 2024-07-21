@@ -6,6 +6,7 @@ import { DialogDescription } from "./Dialog.Description";
 import { DialogTitle } from "./Dialog.Title";
 import { DialogConfirm } from "./Footer/Dialog.Confirm.tsx";
 import { DialogReject } from "./Footer/Dialog.Reject.tsx";
+import { DialogConfirmation } from "../../Product/Dialog/DialogConfirmation.tsx";
 
 
 export const Dialog = {
@@ -16,5 +17,7 @@ export const Dialog = {
     Title: DialogTitle,
     Footer: DialogFooter,
     Confirm: DialogConfirm,
-    Reject: DialogReject
+    Reject: DialogReject,
+
+    Confirmation: DialogConfirmation
 }

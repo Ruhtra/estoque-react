@@ -3,3 +3,8 @@ export type IncreaseStockRequestDto = {
     amount: number,
     price: number
 }
+
+export type DecreaseStockRequestDto = {
+    id: string
+    amount: number
+}

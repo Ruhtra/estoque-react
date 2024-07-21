@@ -48,9 +48,24 @@ tr+tr>td {
     border-top-width: .1em;
 }
 
+.info {
+    padding: .25em 1em;
+    border-radius: .5em;
+    color: var(--color-4);
+    font-size: 1.5em;
+    background-color: var(--color-3);
+}
+
+.options {
+    display: grid;
+    width: 50%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1em;
+}
 
 /* remover daqui */
-.btnincrease {
+.options .btnincrease {
     cursor: pointer;
     font-size: 1.25em;
     background-color: green;
@@ -59,7 +74,16 @@ tr+tr>td {
     margin-right: 2em;
     color: white;
 }
-.btnDelete {
+.options .btnDecrease {
+    cursor: pointer;
+    font-size: 1.25em;
+    background-color: rgb(209, 126, 0);
+    padding: .5em 1em;
+    border-radius: .2em;
+    margin-right: 2em;
+    color: white;
+}
+.options .btnDelete {
     cursor: pointer;
     font-size: 1.25em;
     background-color: red;
