@@ -16,6 +16,9 @@ export type GetAllHistoryResponseDto = {
     createdAt: Date,
     product: {
         name: string
-    }
+        measureType: {
+            name: string
+        }
+    },
 
 }

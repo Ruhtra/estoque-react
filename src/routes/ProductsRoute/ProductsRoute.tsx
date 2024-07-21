@@ -37,7 +37,7 @@ export function ProductsRoute() {
                                     return <tr key={p.id}>
                                         <td>{p.name}</td>
                                         <td>{p.stock.amount}</td>
-                                        <td>null</td>
+                                        <td>{p.measureType.name}</td>
                                         <td>
                                             <DialogProvider>
                                                 <OpenProductDialog product={p} ><button>open</button></OpenProductDialog>

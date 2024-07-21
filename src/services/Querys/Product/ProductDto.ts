@@ -1,7 +1,7 @@
 export interface CreateProductRequestDto {
     name: string
+    measureType: string
 }
-
 
 
 export interface GetAllProductResponseDto {
@@ -10,6 +10,10 @@ export interface GetAllProductResponseDto {
     stock: {
         id: string,
         amount: number
+    },
+    measureType: {
+        id: string,
+        name: string
     }
 }
 
@@ -25,6 +29,10 @@ export interface GetProductResponseDto {
     stock: {
         id: string,
         amount: number
+    },
+    measureType: {
+        id: string,
+        name: string
     }
 }
 export interface DeleteProductRequestDto {
