@@ -16,7 +16,6 @@ export function IncreaseStockDialog({ children, id }: IncreaseStockDialogProps) 
     function increaseStock(data: any) {
         mutate({
             amount: parseFloat(data.amount),
-            price: parseFloat(data.price),
             id: id
         })
     }
@@ -42,9 +41,6 @@ export function IncreaseStockDialog({ children, id }: IncreaseStockDialogProps) 
                     <form onSubmit={handleSubmit(increaseStock)}>
                         <Form.Section id="amountInput" label='Amount'>
                             <input type="number" step={0.01} id="amount" {...register('amount')} />
-                        </Form.Section>
-                        <Form.Section id="priceInput" label="Price">
-                            <input type="number" step={0.01} id="priceInput" {...register('price')} />
                         </Form.Section>
 
                         <button ref={buttonSubmit} style={{display: 'none'}} type='submit'></button>

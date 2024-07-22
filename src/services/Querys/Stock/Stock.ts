@@ -5,10 +5,9 @@ import { DecreaseStockRequestDto, IncreaseStockRequestDto } from "./StockDto"
 
 export function useIncreaseStock() {
     return useMutation(
-        async ({ id: idProduct, price, amount }: IncreaseStockRequestDto) => {
+        async ({ id: idProduct, amount }: IncreaseStockRequestDto) => {
             await api.post('/stock/increase', {
                 id: idProduct,
-                price,
                 amount
             })
         }, {

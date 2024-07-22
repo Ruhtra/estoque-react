@@ -1,7 +1,6 @@
 export type IncreaseStockRequestDto = {
     id: string
-    amount: number,
-    price: number
+    amount: number
 }
 
 export type DecreaseStockRequestDto = {

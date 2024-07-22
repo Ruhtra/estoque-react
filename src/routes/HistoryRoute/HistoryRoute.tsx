@@ -19,7 +19,7 @@ export function HistoryRoute() {
                         <thead>
                             <tr>
                                 <td>Name</td>
-                                <td>Price</td>
+                                <td>Amount</td>
                                 <td>Created</td>
                                 <td>operation</td>
                             </tr>
@@ -30,7 +30,7 @@ export function HistoryRoute() {
                                     let date = new Date(p.createdAt)
                                     return <tr key={p.id}>
                                         <td>{p.product.name}</td>
-                                        <td>{p.price}</td>
+                                        <td>{p.amount}</td>
                                         <td>{date.toLocaleDateString()}</td>
                                         <td>{p.operation}</td>
                                     </tr>
