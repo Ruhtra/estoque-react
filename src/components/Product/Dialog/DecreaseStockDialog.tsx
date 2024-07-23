@@ -1,16 +1,18 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useContext, useEffect, useRef } from 'react';
 import { useDecreaseStock } from '../../../services/Querys/Stock/Stock';
 import { Dialog } from '../../UI/Dialog';
 import { useForm } from 'react-hook-form';
 import { Form } from '../../UI/Form';
+import { DialogContext } from '../../UI/Dialog/DialogContext';
 export type DecreaseStockDialogProps = {
     children: ReactNode
     id: string
 }
 
 export function DecreaseStockDialog({ children, id }: DecreaseStockDialogProps) {
-    const { register, handleSubmit , reset: resetInputs} = useForm()
-    const { mutate, status, reset} = useDecreaseStock()
+    const { openDialog } = useContext(DialogContext)
+    const { register, handleSubmit, reset: resetInputs } = useForm()
+    const { mutate, status, reset } = useDecreaseStock()
     const buttonSubmit = useRef<HTMLButtonElement>(null)
 
     function increaseStock(data: any) {
@@ -20,14 +22,18 @@ export function DecreaseStockDialog({ children, id }: DecreaseStockDialogProps) 
         })
     }
 
-    
+
     /* remover esse código daqui e coloca-lo dentros dos dialgos */
     useEffect(() => {
-        if (status == 'success' ) {
+        if (status == 'success') {
             reset()
             resetInputs()
         }
     }, [status])
+    useEffect(() => {
+        if (openDialog == false) reset()
+    }, [openDialog])
+
 
 
     return (
@@ -43,7 +49,7 @@ export function DecreaseStockDialog({ children, id }: DecreaseStockDialogProps) 
                             <input type="number" step={0.01} id="amount" {...register('amount')} />
                         </Form.Section>
 
-                        <button ref={buttonSubmit} style={{display: 'none'}} type='submit'></button>
+                        <button ref={buttonSubmit} style={{ display: 'none' }} type='submit'></button>
                     </form>
                 </Dialog.Description>
                 <Dialog.Footer>

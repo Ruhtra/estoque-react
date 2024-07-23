@@ -15,7 +15,7 @@ export type CreateProductDialogProps = {
 
 
 export function CreateProductDialog({ children }: CreateProductDialogProps) {
-    const { setOpenDialog } = useContext(DialogContext)
+    const { openDialog, setOpenDialog } = useContext(DialogContext)
     const { data: dataMeasureTypeAll, status: statusMeasureTypeAll } = useGetAllMeasureType()
 
     const { register, handleSubmit, reset: resetInputs } = useForm()
@@ -36,7 +36,9 @@ export function CreateProductDialog({ children }: CreateProductDialogProps) {
             resetInputs()
         }
     }, [status])
-
+    useEffect(() => {
+        if (openDialog == false) reset()
+    }, [openDialog])
 
     return (
         <Dialog.Root>

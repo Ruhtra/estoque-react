@@ -1,14 +1,16 @@
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useContext, useEffect, useRef } from 'react';
 import { useIncreaseStock } from '../../../services/Querys/Stock/Stock';
 import { Dialog } from '../../UI/Dialog';
 import { useForm } from 'react-hook-form';
 import { Form } from '../../UI/Form';
+import { DialogContext } from '../../UI/Dialog/DialogContext';
 export type IncreaseStockDialogProps = {
     children: ReactNode
     id: string
 }
 
 export function IncreaseStockDialog({ children, id }: IncreaseStockDialogProps) {
+    const { openDialog } = useContext(DialogContext)
     const { register, handleSubmit, reset: resetInputs } = useForm()
     const { mutate, status, reset } = useIncreaseStock()
     const buttonSubmit = useRef<HTMLButtonElement>(null)
@@ -28,6 +30,9 @@ export function IncreaseStockDialog({ children, id }: IncreaseStockDialogProps) 
             resetInputs()
         }
     }, [status])
+    useEffect(() => {
+        if (openDialog == false) reset()
+    }, [openDialog])
 
 
     return (
